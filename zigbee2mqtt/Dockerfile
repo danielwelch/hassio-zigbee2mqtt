@@ -8,7 +8,7 @@ ENV ZIGBEE2MQTT_VERSION=0.1.1
 ENV ARCHIVE=zigbee2mqtt-$ZIGBEE2MQTT_VERSION
 
 RUN apk add --update --no-cache curl jq nodejs nodejs-npm python3 python3-dev \
-        python2 make gcc g++ linux-headers udev && \
+        python2 make gcc g++ linux-headers udev git && \
         pip3 install PyYAML
         
 RUN curl -sL -o "/$ARCHIVE.tar.gz" \
@@ -20,9 +20,9 @@ COPY set_config.py /$ARCHIVE/set_config.py
 
 WORKDIR /$ARCHIVE
 
-RUN ["chmod", "a+x", "/$ARCHIVE/run.sh"]
+RUN ["chmod", "a+x", "./run.sh"]
 RUN ["npm", "install", "--unsafe-perm", "-g", "pm2"]
 RUN ["npm", "install", "--unsafe-perm"]
 RUN apk del make gcc g++ python2 linux-headers udev
 
-CMD [ "/$ARCHIVE/run.sh" ]
+CMD [ "./run.sh" ]
