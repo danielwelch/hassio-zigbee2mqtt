@@ -11,10 +11,9 @@ RUN apk add --update --no-cache curl jq nodejs nodejs-npm python3 python3-dev \
         python2 make gcc g++ linux-headers udev && \
         pip3 install PyYAML
         
-RUN curl -sL -o /zigbee2mqtt.tar.gz \
+RUN curl -sL -o "/$ARCHIVE.tar.gz" \
     "https://github.com/Koenkk/zigbee2mqtt/archive/$ZIGBEE2MQTT_VERSION.tar.gz" && \
-    cd / && \
-    tar xzvf /zigbee2mqtt.tar.gz
+    tar xzvf "/$ARCHIVE.tar.gz" -C /
 
 COPY run.sh /$ARCHIVE/run.sh
 COPY set_config.py /$ARCHIVE/set_config.py
