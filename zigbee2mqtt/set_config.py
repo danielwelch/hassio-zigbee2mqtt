@@ -34,7 +34,7 @@ def main(options_path, data_path):
     if config.get('serial', None) is None:
         config['serial'] = dict()
     config['serial']['port'] = options["serial_port"]
-    if options.get("serial_disable_led", None)
+    if options.get("serial_disable_led", None):
         config['serial']['disable_led'] = options["serial_disable_led"]
 
     with open(config_path, 'w') as f:
