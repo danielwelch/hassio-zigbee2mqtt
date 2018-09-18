@@ -37,6 +37,10 @@ class ConfigBuilder:
         with open(config_path, 'w') as f:
             yaml.safe_dump(self.config, f, default_flow_style=False)
 
+    def set_log_dir(self, data_path):
+        log_dir = Path(data_path).joinpath(self.options["log_directory"])
+        self.config["advanced"]["log_directory"] = log_dir
+
 
 def main(options_path, data_path):
 
@@ -74,7 +78,8 @@ def main(options_path, data_path):
     config.set_option('disable_led', category='serial')
 
     config.set_option('cache_state', category='advanced')
-    # config.set_option('log_directory')
+    config.set_log_dir(data_path, options['log_directory'])
+    config.set_option('log_directory', category='advanced')
     config.set_option('log_level', category='advanced')
     config.set_option('rtscts', category='advanced')
 
