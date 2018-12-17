@@ -9,7 +9,7 @@ This project is versioned based upon the version of [zigbee2mqtt](https://github
 ### Changed
 - update zigbee2mqtt to version 1.0.1
 
-## [1.0.1](https://github.com/danielwelch/hassio-zigbee2mqtt/releases/tag/v1.0.1) - 2018-12-17
+## [1.0.0](https://github.com/danielwelch/hassio-zigbee2mqtt/releases/tag/v1.0.0) - 2018-12-17
 ### Changed
 - update zigbee2mqtt to version 1.0.0
 - Includes new or changed options for zigbee2mqtt:
