@@ -12,6 +12,7 @@ This project is versioned based upon the version of [zigbee2mqtt](https://github
 ## [1.0.0](https://github.com/danielwelch/hassio-zigbee2mqtt/releases/tag/v1.0.0) - 2018-12-17
 ### Changed
 - update zigbee2mqtt to version 1.0.0
+### Added
 - Includes new or changed options for zigbee2mqtt:
     - `reject_unauthorized`
     - `pan_id`
@@ -31,7 +32,7 @@ This project is versioned based upon the version of [zigbee2mqtt](https://github
 - update zigbee2mqtt to version 0.1.5
 
 ## [0.1.3.1](https://github.com/danielwelch/hassio-zigbee2mqtt/releases/tag/v0.1.3.1) - 2018-09-17
-### Changed
+### Added
 - Includes new or changed options for zigbee2mqtt:
     - `mqtt_client_id`
     - `disable_led` (*renamed from `serial_disable_led`*)
