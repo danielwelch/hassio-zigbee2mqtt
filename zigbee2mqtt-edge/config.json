@@ -15,8 +15,6 @@
     "mqtt_base_topic": "zigbee2mqtt",
     "mqtt_server": "mqtt://homeassistant",
     "serial_port": "/dev/ttyACM0",
-    "devices": []
-  },
     "disable_led": "false",
     "devices": []
   },
