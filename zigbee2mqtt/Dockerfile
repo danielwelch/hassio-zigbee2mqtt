@@ -18,7 +18,7 @@ COPY run.sh /$ARCHIVE/run.sh
 COPY set_config.py /$ARCHIVE/set_config.py
 COPY requirements.txt /$ARCHIVE/requirements.txt
 
-RUN pip3 install -r /$ARCHIVE/requirements.txt
+RUN pip3 install --no-cache-dir -r /$ARCHIVE/requirements.txt
 
 WORKDIR /$ARCHIVE
 
