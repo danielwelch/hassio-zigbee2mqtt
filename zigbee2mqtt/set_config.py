@@ -94,35 +94,31 @@ def main(options_path, data_path):
     cfg.set_option('homeassistant')
     cfg.set_option('permit_join')
 
-    cfg.set_option(
-        'mqtt_base_topic', category='mqtt', alt_config_name='base_topic')
+    cfg.set_option('mqtt_base_topic', category='mqtt', alt_config_name='base_topic')
     cfg.set_option('mqtt_server', category='mqtt', alt_config_name='server')
-    cfg.set_option(
-        'mqtt_client_id', category='mqtt', alt_config_name='client_id')
-    cfg.set_option('include_device_information', category='mqtt')
-    cfg.set_option('reject_unauthorized', category='mqtt')
-
     if options.get("mqtt_user", None) or options.get("mqtt_pass", None):
         cfg.set_option('mqtt_user', category='mqtt', alt_config_name='user')
-        cfg.set_option(
-            'mqtt_pass', category='mqtt', alt_config_name='password')
-
+        cfg.set_option('mqtt_pass', category='mqtt', alt_config_name='password')
+    cfg.set_option('mqtt_client_id', category='mqtt', alt_config_name='client_id')
+    cfg.set_option('reject_unauthorized', category='mqtt')
+    cfg.set_option('include_device_information', category='mqtt')
+    #serial
     cfg.set_option('serial_port', category='serial', alt_config_name='port')
     cfg.set_option('disable_led', category='serial')
-
-    cfg.set_option('cache_state', category='advanced')
-
-    cfg.set_log_dir(data_path)
-
-    cfg.set_option('log_level', category='advanced')
-    cfg.set_option('rtscts', category='advanced')
-
-    cfg.set_option('soft_reset_timeout', category='advanced')
-
+    #advanced config
     cfg.set_option('pan_id', category='advanced')
     cfg.set_option('channel', category='advanced')
-
+    cfg.set_option('cache_state', category='advanced')
+    cfg.set_option('log_level', category='advanced')
+    cfg.set_option('baudrate', category='advanced')
+    cfg.set_option('rtscts', category='advanced')
+    cfg.set_option('soft_reset_timeout', category='advanced')
+    cfg.set_option('network_key', category='advanced')
+    cfg.set_option('last_seen', category='advanced')
+    cfg.set_option('elapsed', category='advanced')
     cfg.set_option('availability_timeout', category='experimental')
+    
+    cfg.set_log_dir(data_path)
 
     # set device-specific settings
     if options.get("devices", None):
