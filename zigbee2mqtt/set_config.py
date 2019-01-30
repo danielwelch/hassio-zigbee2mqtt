@@ -100,8 +100,8 @@ def main(options_path, data_path):
         cfg.set_option('mqtt_user', category='mqtt', alt_config_name='user')
         cfg.set_option('mqtt_pass', category='mqtt', alt_config_name='password')
     cfg.set_option('mqtt_client_id', category='mqtt', alt_config_name='client_id')
-    cfg.set_option('reject_unauthorized', category='mqtt')
-    cfg.set_option('include_device_information', category='mqtt')
+    cfg.set_option('mqtt_reject_unauthorized', category='mqtt')
+    cfg.set_option('mqtt_include_device_information', category='mqtt')
     #serial
     cfg.set_option('serial_port', category='serial', alt_config_name='port')
     cfg.set_option('disable_led', category='serial')
