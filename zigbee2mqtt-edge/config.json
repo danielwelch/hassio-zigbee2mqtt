@@ -9,7 +9,7 @@
     "boot": "auto",
     "map": ["share:rw"],
     "options": {
-        "data_path": "/share/zigbee2mqtt2",
+        "data_path": "/share/zigbee2mqtt",
         "devices": "decices.yaml",
         "groups": "groups.yaml",
         "homeassistant": true,
