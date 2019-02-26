@@ -4,8 +4,10 @@ CONFIG_PATH=/data/options.json
 
 DATA_PATH=$(jq --raw-output ".data_path" $CONFIG_PATH)
 
-# Parse config file
-cp $CONFIG_PATH $DATA_PATH/configuration.yaml
+mkdir -p $DATA_PATH
+
+# Parse config
+cat $CONFIG_PATH | jq 'del(.data_path)' > $DATA_PATH/configuration.yaml
 
 ZIGBEE_SHEPHERD_DEBUG=$(jq --raw-output ".zigbee_shepherd_debug // empty" $CONFIG_PATH)
 ZIGBEE_SHEPHERD_DEVICES=$(jq --raw-output ".zigbee_shepherd_devices // empty" $CONFIG_PATH)

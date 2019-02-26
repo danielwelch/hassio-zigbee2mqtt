@@ -9,52 +9,30 @@
     "boot": "auto",
     "map": ["share:rw"],
     "options": {
-        "data_path": "/share/zigbee2mqtt",
-        "devices": [],
-
+        "data_path": "/share/zigbee2mqtt2",
+        "devices": "decices.yaml",
+        "groups": "groups.yaml",
         "homeassistant": true,
         "permit_join": false,
         "mqtt": {
             "base_topic": "zigbee2mqtt",
             "server": "mqtt://homeassistant",
             "user": "my_user",
-            "password": "my_password",
-            "client_id": "MY_CLIENT_ID",
-            "reject_unauthorized": true,
-            "include_device_information": true
+            "password": "my_password"
         },
         "serial":{
-            "port": "/dev/ttyACM0",
-            "disable_led": false
+            "port": "/dev/ttyACM0"
         },
         "advanced": {
             "pan_id": 6754,
             "channel": 11,
-            "cache_state": true,
-            "log_level": "info",
-            "log_directory": "/data/log/%TIMESTAMP%",
-            "baudrate": 115200,
-            "rtscts": true,
-            "soft_reset_timeout": 0,
-            "network_key": [1, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 10, 12, 13],
-            "last_seen": "disable",
-            "elapsed": false,
-            "availability_timeout": 0
+            "network_key": [1, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 10, 12, 13]
         }
     },
     "schema": {
         "data_path": "str",
-        "devices": [{
-            "id": "str",
-            "friendly_name": "str?",
-            "retain": "bool?",
-            "report": "bool?",
-            "qos": "int?",
-            "occupancy_timeout": "int?",
-            "temperature_precision": "int?",
-            "humidity_precision": "int?",
-            "pressure_precision": "int?"
-        }],
+        "devices": "str",
+        "groups": "str",
         "homeassistant": "bool",
         "permit_join": "bool",
         "mqtt": {
@@ -76,7 +54,7 @@
             "cache_state": "bool?",
             "log_level": "match(^info|debug|warn|error$)?",
             "log_directory": "str?",
-            "baudrate": "match(^110|300|600|1200|2400|4800|9600|14400|19200|28800|38400|56000|57600|115200|128000|153600|230400|256000|460800|921600$)?",
+            "baudrate": "int?",
             "rtscts": "bool?",
             "soft_reset_timeout": "int?",
             "network_key": ["int?"],
