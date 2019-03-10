@@ -9,6 +9,9 @@ This project is versioned based upon the version of [zigbee2mqtt](https://github
 ### Changed
 - Update zigbee2mqtt to version 1.2.1
 - Use Node.js 10 as base docker image
+### Added
+- Includes new config option from zigbee2mqtt:
+    - `report`
 
 ## [1.1.1](https://github.com/danielwelch/hassio-zigbee2mqtt/releases/tag/v1.1.1) - 2019-02-02
 ### Changed
