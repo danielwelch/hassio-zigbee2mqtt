@@ -47,7 +47,6 @@
     "elapsed": "bool?",
     "overwrite": "bool?",
     "homeassistant_discovery_topic": "str?",
-    "debounce": "float?",
     "devices": [
       {
         "id": "str",
@@ -58,7 +57,8 @@
         "occupancy_timeout": "int?",
         "temperature_precision": "int?",
         "humidity_precision": "int?",
-        "pressure_precision": "int?"
+        "pressure_precision": "int?",
+        "debounce": "float?"
       }
     ],
     "network_key": ["int?"]
