@@ -1,6 +1,8 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
+ARG COMMIT
+
 # Add env
 ENV LANG C.UTF-8
 
@@ -16,6 +18,8 @@ RUN apk add --update --no-cache \
 
 COPY run.sh /app/run.sh
 WORKDIR /app
+
+RUN jq -n '{"hash": env.COMMIT}' > ./.hash.json
 
 RUN ["chmod", "a+x", "./run.sh"]
 CMD [ "./run.sh" ]
