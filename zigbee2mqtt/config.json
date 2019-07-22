@@ -41,7 +41,7 @@
     },
 	"ban": [],
     "whitelist": [],
-    "queue": { }
+    "queue": {}
   },
   "schema": {
     "zigbee_shepherd_devices": "bool?",
