@@ -31,7 +31,7 @@
     },
     "serial": {
       "port": "/dev/ttyACM0",
-      "disable_led": "bool?"
+      "disable_led": false
     },
     "advanced": {
       "pan_id": 6754,
