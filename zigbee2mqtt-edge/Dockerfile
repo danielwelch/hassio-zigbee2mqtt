@@ -8,7 +8,7 @@ ENV COMMIT=$COMMIT
 ENV LANG C.UTF-8
 
 RUN apk add --update --no-cache \
-    jq nodejs nodejs-npm \
+    jq nodejs nodejs-npm socat \
     make gcc g++ linux-headers udev git python2 && \
   git clone -b dev --single-branch --depth 1 https://github.com/Koenkk/zigbee2mqtt.git /app && \
   cd /app && \
