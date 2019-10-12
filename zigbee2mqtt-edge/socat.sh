@@ -27,7 +27,7 @@ fi
 if (("$SOCAT_INITDELAY" <= "0")); then
   SOCAT_INITDELAY=0
 fi
-if [[ ! -z "$SOCAT_ENABLED" ]] && [[ "$SOCAT_ENABLED" = true ]]; then
+if [[ ! -z "$SOCAT_LOG" ]] && [[ "$SOCAT_LOG" = true ]]; then
   SOCAT_LOGFILE="$DATA_PATH/socat.log"
 else
   SOCAT_LOGFILE=""
