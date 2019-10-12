@@ -133,7 +133,7 @@
 	"socat": {
 	  "enabled": "bool?",
       "master": "str?",
-      "slave": "str?"
+      "slave": "str?",
 	  "restartdelay": "float(0,)?",
       "initialdelay": "float(0,)?",
       "options": "str?",
