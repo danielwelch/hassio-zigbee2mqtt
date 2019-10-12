@@ -19,9 +19,11 @@ RUN apk add --update --no-cache \
   rm -rf /app/docs /app/test /app/images /app/scripts /app/data /app/docker /app/LICENSE /app/README.md /app/update.sh
 
 COPY run.sh /app/run.sh
+COPY socat.sh /app/socat.sh
 WORKDIR /app
 
 RUN jq -n '{"hash": env.COMMIT}' > ./.hash.json
 
+RUN ["chmod", "a+x", "./socat.sh"]
 RUN ["chmod", "a+x", "./run.sh"]
 CMD [ "./run.sh" ]
