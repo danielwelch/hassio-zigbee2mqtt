@@ -139,6 +139,5 @@
       "options": "str?",
 	  "log": "bool?"
 	}
-  },
-  "image": "dwelch2101/zigbee2mqtt-{arch}"
+  }
 }
