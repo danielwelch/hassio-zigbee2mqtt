@@ -21,7 +21,7 @@
     "8485/tcp": 8485
   },
   "ports_description": {
-    "8485/tcp": "Socat port"
+    "8485/tcp": "Socat tcp-listen port"
   },
   "options": {
     "data_path": "/share/zigbee2mqtt",
@@ -47,15 +47,15 @@
     "ban": [],
     "whitelist": [],
     "queue": {},
-	"socat": {
-	  "enabled": false,
+    "socat": {
+      "enabled": false,
       "master": "pty,raw,echo=0,link=/dev/ttyZ2M,mode=777",
       "slave": "tcp-listen:8485,keepalive,nodelay,reuseaddr,keepidle=1,keepintvl=1,keepcnt=5",
-	  "restartdelay": 1,
+      "restartdelay": 1,
       "initialdelay": 1,
       "options": "-d -d",
-	  "log": false
-	}
+      "log": false
+    }
   },
   "schema": {
     "zigbee_shepherd_devices": "bool?",
@@ -113,15 +113,15 @@
       "delay": "int?",
       "simultaneously": "int?"
     },
-	"socat": {
-	  "enabled": "bool?",
+    "socat": {
+      "enabled": "bool?",
       "master": "str?",
       "slave": "str?",
-	  "restartdelay": "float(0,)?",
+      "restartdelay": "float(0,)?",
       "initialdelay": "float(0,)?",
       "options": "str?",
-	  "log": "bool?"
-	}
+      "log": "bool?"
+    }
   },
   "image": "dwelch2101/zigbee2mqtt-edge-{arch}"
 }
