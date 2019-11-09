@@ -40,6 +40,10 @@
     },
     "advanced": {
       "pan_id": 6754,
+      "ext_pan_id": ["0xDD", "0xDD", "0xDD", "0xDD", "0xDD", "0xDD", "0xDD", "0xDD"],
+      "experimental": {
+        "livolo": "false"  
+      },
       "channel": 11,
       "network_key": [1, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 10, 12, 13],
       "availability_blacklist": []
