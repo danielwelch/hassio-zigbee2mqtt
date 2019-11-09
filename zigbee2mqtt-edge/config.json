@@ -89,6 +89,9 @@
     ],
     "advanced": {
       "pan_id": "int(0,65536)?",
+      "ext_pan_id": [
+        "match(0x[0-9a-fA-F]+|[0-9]+)?"
+      ],      
       "channel": "int(11,26)?",
       "cache_state": "bool?",
       "log_level": "match(^info|debug|warn|error$)?",
@@ -107,7 +110,10 @@
       ],
       "report": "bool?",
       "homeassistant_discovery_topic": "str?",
-      "homeassistant_status_topic": "str?"
+      "homeassistant_status_topic": "str?",
+      "experimental": {
+        "livolo": "bool?"
+      }
     },
     "queue": {
       "delay": "int?",
