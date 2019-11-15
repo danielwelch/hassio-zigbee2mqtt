@@ -40,25 +40,9 @@
     },
     "advanced": {
       "pan_id": 6754,
+      "ext_pan_id": [221, 221, 221, 221, 221, 221, 221, 221],
       "channel": 11,
-      "network_key": [
-        1,
-        3,
-        5,
-        7,
-        9,
-        11,
-        13,
-        15,
-        0,
-        2,
-        4,
-        6,
-        8,
-        10,
-        12,
-        13
-      ],
+      "network_key": [1, 3, 5, 7, 9, 11, 13, 15, 0, 2, 4, 6, 8, 10, 12, 13],
       "availability_blacklist": []
     },
     "ban": [],
@@ -106,6 +90,9 @@
     ],
     "advanced": {
       "pan_id": "int(0,65536)?",
+      "ext_pan_id": [
+        "int(0,255)?"
+      ],
       "channel": "int(11,26)?",
       "cache_state": "bool?",
       "log_level": "match(^info|debug|warn|error$)?",
