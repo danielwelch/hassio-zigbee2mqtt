@@ -44,6 +44,41 @@ if [[ ! -z "$ZIGBEE_SHEPHERD_DEVICES" ]]; then
     fi
 fi
 
+if [[ ! -z "$ZIGBEE_SHEPHERD_FROMZIGBEE" ]]; then
+    echo "[Info] Searching for custom fromZigbee.js file in zigbee2mqtt data path..."
+    if [[ -f "$DATA_PATH"/fromZigbee.js ]]; then
+        cp -f "$DATA_PATH"/fromZigbee.js ./node_modules/zigbee-herdsman-converters/converters/fromZigbee.js
+    else
+        echo "[Error] File $DATA_PATH/fromZigbee.js not found! Starting with default fromZigbee.js"
+    fi
+fi
+
+if [[ ! -z "$ZIGBEE_SHEPHERD_TOZIGBEE" ]]; then
+    echo "[Info] Searching for custom toZigbee.js file in zigbee2mqtt data path..."
+    if [[ -f "$DATA_PATH"/toZigbee.js ]]; then
+        cp -f "$DATA_PATH"/toZigbee.js ./node_modules/zigbee-herdsman-converters/converters/toZigbee.js
+    else
+        echo "[Error] File $DATA_PATH/toZigbee.js not found! Starting with default toZigbee.js"
+    fi
+fi
+
+if [[ ! -z "$ZIGBEE_SHEPHERD_HOMEASSISTANT" ]]; then
+    echo "[Info] Searching for custom homeassistant.js file in zigbee2mqtt data path..."
+    if [[ -f "$DATA_PATH"/homeassistant.js ]]; then
+        cp -f "$DATA_PATH"/homeassistant.js ./lib/extension/homeassistant.js
+    else
+        echo "[Error] File $DATA_PATH/homeassistant.js not found! Starting with default homeassistant.js"
+    fi
+fi
+
+if [[ ! -z "$ZIGBEE_SHEPHERD_UTILS" ]]; then
+    echo "[Info] Searching for custom utils.js file in zigbee2mqtt data path..."
+    if [[ -f "$DATA_PATH"/utils.js ]]; then
+        cp -f "$DATA_PATH"/utils.js ./lib/util/utils.js
+    else
+        echo "[Error] File $DATA_PATH/utils.js not found! Starting with default utils.js"
+    fi
+fi
 # FORK SOCAT IN A SEPARATE PROCESS IF ENABLED
 SOCAT_EXEC="$(dirname $0)/socat.sh"
 $SOCAT_EXEC $CONFIG_PATH

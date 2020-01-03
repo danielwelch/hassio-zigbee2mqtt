@@ -59,6 +59,10 @@
   },
   "schema": {
     "zigbee_shepherd_devices": "bool?",
+    "zigbee_shepherd_fromzigbee": "bool?",
+    "zigbee_shepherd_tozigbee": "bool?",
+    "zigbee_shepherd_homeassistant": "bool?",
+    "zigbee_shepherd_utils": "bool?",
     "zigbee_herdsman_debug": "bool?",
     "data_path": "str",
     "devices": "str?",
