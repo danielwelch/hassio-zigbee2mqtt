@@ -22,16 +22,20 @@ Version 1.5.1 contains breaking changes and requires re-formating of the add-on 
 #### Restoring Configuration after upgrading to 1.5.1
 By default, when upgrading to v1.5.1, the add-on will create a backup of your configuration.yml within your data path: `$DATA_PATH/configuration.yaml.bk`. When upgrading, you should use this to fill in the relevant values into your new config, particularly the network key, to avoid breaking your network and having to repair all of your devices.
 
-
 ## Installation
 
-Add the repository URL via the Hassio Add-on Store Tab: `https://github.com/danielwelch/hassio-zigbee2mqtt`
+Add the repository URL via the Hassio Add-on Store Tab:
 
-The repository includes two add-ons: **zigbee2mqtt** and **zigbee2mqtt-edge**. For a stable release that tracks the released versions of zigbee2mqtt, install zigbee2mqtt. zigbee2mqtt-edge tracks the dev branch of zigbee2mqtt, so you can install the edge version if there are features or fixes in the dev branch that are not yet released.
+    https://github.com/danielwelch/hassio-zigbee2mqtt
+
+The repository includes two add-ons:
+
+- **zigbee2mqtt** is a stable release that tracks the released versions of zigbee2mqtt.
+- **zigbee2mqtt-edge** tracks the `dev` branch of zigbee2mqtt, so you can install the edge version if there are features or fixes in the dev branch that are not yet released.
 
 ## Configuration
 
-Configure the add-on via the Hass.io front-end. The configuration closely mirrors that of `zigbee2mqtt` itself, with a couple of key differences:
+Configure the add-on via the Hass.io front-end under "Supervisor (Hass.io) → Dashboard → zigbee2mqtt".
 1. Hass.io requires add-on configuration in JSON format, rather than YAML. If you don't understand the difference, you can use a YAML-to-JSON converter.
 2. An additional top-level `data_path` option is required which defaults to `/share/zigbee2mqtt`. This is the path where the add-on should persist the data. The path must be relative to the Home Assistant shared data directory (which is `/usr/share/hassio` for Hass.io). Note that both `config` and `share` directories are mapped into the container (read-write) and are available to you.
 3. If you are using groups or device-specific settings, you must use seperate files, and provide the paths to these files in their corresponding config options as described by the zigbee2mqtt docs. This is due to a limitation Hass.io places on nested config levels.
@@ -39,7 +43,7 @@ Configure the add-on via the Hass.io front-end. The configuration closely mirror
 See the [zigbee2mqtt configuration docs](https://www.zigbee2mqtt.io/information/configuration.html) for a complete description of available options. If you're not sure if a new option is supported, check to see if it is listed under the `schema` section of [`zigbee2mqtt/config.json`](zigbee2mqtt/config.json) or [`zigbee2mqtt_edge/config.json`](zigbee2mqtt_edge/config.json) in this repository. If not, you can open an issue to add support for it.
 
 - Depending on your configuration, the MQTT server config may need to include the port, typically `1883` or `8883` for SSL communications. For example, `mqtt://core-mosquitto:1883` for Hass.io's Mosquitto addon.
-- To find out which serial ports you have exposed go to **Supervisor (used to be Hass.io) > System > Host system > Hardware**
+- To find out which serial ports you have exposed go to "Supervisor (Hass.io) → System → Host system → Hardware".
 
 ## Pairing
 
