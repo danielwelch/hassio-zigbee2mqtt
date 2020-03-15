@@ -24,7 +24,7 @@ By default, when upgrading to v1.5.1, the add-on will create a backup of your co
 
 ## Installation
 
-Add the repository URL under **Supervisor (Hass.io) → Add-on Store** in your Home Assistant frontend:
+Add the repository URL under **Supervisor (Hass.io) → Add-on Store** in your Home Assistant front-end:
 
     https://github.com/danielwelch/hassio-zigbee2mqtt
 
@@ -35,7 +35,7 @@ The repository includes two add-ons:
 
 ## Configuration
 
-Configure the add-on via the Hass.io front-end under **Supervisor (Hass.io) → Dashboard → zigbee2mqtt**.
+Configure the add-on via your Home Assistant front-end under **Supervisor (Hass.io) → Dashboard → zigbee2mqtt**.
 
 The configuration closely mirrors that of [zigbee2mqtt itself](https://www.zigbee2mqtt.io/information/configuration.html), with a couple of key differences:
 
