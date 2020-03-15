@@ -24,7 +24,7 @@ By default, when upgrading to v1.5.1, the add-on will create a backup of your co
 
 ## Installation
 
-Add the repository URL under **Supervisor (Hass.io) → Add-on Store" in your Home Assistant frontend:
+Add the repository URL under **Supervisor (Hass.io) → Add-on Store** in your Home Assistant frontend:
 
     https://github.com/danielwelch/hassio-zigbee2mqtt
 
