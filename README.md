@@ -10,7 +10,7 @@
   </a>
 </div>
 <br>
-<p>Run Zigbee2mqtt as a Hass.io Add-on</p>
+<p>Run [Zigbee2mqtt](https://www.zigbee2mqtt.io) as a Hass.io Add-on</p>
 </div>
 
 ## Warning: Breaking Changes in version 1.7.0+
