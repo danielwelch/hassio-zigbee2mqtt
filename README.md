@@ -35,7 +35,7 @@ The repository includes two add-ons:
 
 ## Configuration
 
-Configure the add-on via the Hass.io front-end under "Supervisor (Hass.io) → Dashboard → zigbee2mqtt".
+Configure the add-on via the Hass.io front-end under **Supervisor (Hass.io) → Dashboard → zigbee2mqtt**.
 
 The configuration closely mirrors that of [zigbee2mqtt itself](https://www.zigbee2mqtt.io/information/configuration.html), with a couple of key differences:
 
@@ -48,7 +48,7 @@ The configuration closely mirrors that of [zigbee2mqtt itself](https://www.zigbe
 See the [zigbee2mqtt configuration docs](https://www.zigbee2mqtt.io/information/configuration.html) for a complete description of available options. If you're not sure if a new option is supported, check to see if it is listed under the `schema` section of [`zigbee2mqtt/config.json`](zigbee2mqtt/config.json) or [`zigbee2mqtt_edge/config.json`](zigbee2mqtt_edge/config.json) in this repository. If not, you can open an issue to add support for it.
 
 - Depending on your configuration, the MQTT server config may need to include the port, typically `1883` or `8883` for SSL communications. For example, `mqtt://core-mosquitto:1883` for Hass.io's Mosquitto addon.
-- To find out which serial ports you have exposed go to "Supervisor (Hass.io) → System → Host system → Hardware".
+- To find out which serial ports you have exposed go to **Supervisor (Hass.io) → System → Host system → Hardware**.
 
 ## Pairing
 
