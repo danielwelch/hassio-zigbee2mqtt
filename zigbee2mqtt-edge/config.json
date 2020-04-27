@@ -106,6 +106,9 @@
       "last_seen": "match(^disable|ISO_8601|epoch)?",
       "elapsed": "bool?",
       "availability_timeout": "int?",
+      "availability_whitelist": [
+        "str?"
+      ],
       "availability_blacklist": [
         "str?"
       ],
