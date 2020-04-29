@@ -33,10 +33,6 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
     | jq 'if .advanced.network_key_string then .advanced.network_key = (.advanced.network_key_string | (split(",")|map(tonumber))) | del(.advanced.network_key_string) else . end' \
     > $DATA_PATH/configuration.yaml
 
-if [[ ! -z "$ZIGBEE_HERDSMAN_DEBUG" ]]; then
-    echo "[Info] Zigbee Herdsman debug logging enabled."
-    DEBUG="zigbee-herdsman:*"
-fi
 
 if [[ ! -z "$ZIGBEE_SHEPHERD_DEVICES" ]]; then
     echo "[Info] Searching for custom devices file in zigbee2mqtt data path..."
@@ -52,4 +48,12 @@ SOCAT_EXEC="$(dirname $0)/socat.sh"
 $SOCAT_EXEC $CONFIG_PATH
 
 # RUN zigbee2mqtt
-ZIGBEE2MQTT_DATA="$DATA_PATH" DEBUG="$DEBUG" pm2-runtime start npm -- start
+if [[ ! -z "$ZIGBEE_HERDSMAN_DEBUG" ]]; then
+    echo "[Info] Zigbee Herdsman debug logging enabled."
+    DEBUG="zigbee-herdsman:*"
+    ZIGBEE2MQTT_DATA="$DATA_PATH" DEBUG="$DEBUG" pm2-runtime start npm -- start 2>&1 | tee "$DATA_PATH/debug.log"
+else
+    ZIGBEE2MQTT_DATA="$DATA_PATH" DEBUG="$DEBUG" pm2-runtime start npm -- start
+fi
+
+
