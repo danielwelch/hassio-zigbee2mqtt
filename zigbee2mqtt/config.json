@@ -63,6 +63,7 @@
     },
     "ban": [],
     "whitelist": [],
+    "experimental": {},
     "queue": {},
     "socat": {
       "enabled": false,
@@ -128,6 +129,9 @@
       "report": "bool?",
       "homeassistant_discovery_topic": "str?",
       "homeassistant_status_topic": "str?"
+    },
+    "experimental": {
+      "transmit_power": "int?"
     },
     "queue": {
       "delay": "int?",
