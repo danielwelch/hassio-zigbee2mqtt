@@ -25,6 +25,7 @@
   },
   "options": {
     "data_path": "/share/zigbee2mqtt",
+    "external_converters": [],
     "devices": "devices.yaml",
     "groups": "groups.yaml",
     "homeassistant": true,
@@ -78,6 +79,9 @@
     "zigbee_shepherd_devices": "bool?",
     "zigbee_shepherd_debug": "bool?",
     "zigbee_herdsman_debug": "bool?",
+    "external_converters": [
+      "str?"
+    ],
     "data_path": "str",
     "devices": "str?",
     "groups": "str?",
