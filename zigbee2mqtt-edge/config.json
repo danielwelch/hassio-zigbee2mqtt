@@ -57,7 +57,8 @@
       "initialdelay": 1,
       "options": "-d -d",
       "log": false
-    }
+    },
+    "external_converters": []
   },
   "schema": {
     "zigbee_shepherd_devices": "bool?",
@@ -128,7 +129,8 @@
       "initialdelay": "float(0,)?",
       "options": "str?",
       "log": "bool?"
-    }
+    },
+    "external_converters": ["str?"]
   },
   "image": "dwelch2101/zigbee2mqtt-edge-{arch}"
 }
