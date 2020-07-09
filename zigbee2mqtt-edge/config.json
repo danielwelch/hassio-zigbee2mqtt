@@ -1,10 +1,10 @@
 {
-  "name": "zigbee2mqtt-edge",
+  "name": "zigbee2mqtt-edge-mttyptty",
   "version": "test",
-  "slug": "zigbee2mqtt_edge",
+  "slug": "zigbee2mqtt_edge_mttyptty",
   "description": "Development build of the zigbee2mqtt add-on",
   "auto_uart": true,
-  "url": "https://github.com/danielwelch/hassio-zigbee2mqtt",
+  "url": "https://github.com/mttyptty/hassio-zigbee2mqtt",
   "startup": "before",
   "arch": [
     "aarch64",
