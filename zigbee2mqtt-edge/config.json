@@ -77,9 +77,11 @@
       "password": "str?",
       "client_id": "str?",
       "reject_unauthorized": "bool?",
-      "include_device_information": "bool?"
+      "include_device_information": "bool?",
+      "discovery": "bool"
     },
     "serial": {
+      "adapter": "str",
       "port": "str",
       "disable_led": "bool?"
     },
