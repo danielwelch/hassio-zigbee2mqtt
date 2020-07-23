@@ -96,6 +96,7 @@
       "include_device_information": "bool?"
     },
     "serial": {
+      "adapter": "str",
       "port": "str",
       "disable_led": "bool?"
     },
