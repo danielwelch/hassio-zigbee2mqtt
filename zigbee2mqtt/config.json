@@ -40,6 +40,7 @@
       "port": "/dev/ttyACM0"
     },
     "advanced": {
+      "log_level": "info",
       "pan_id": 6754,
       "channel": 11,
       "network_key": [
@@ -60,10 +61,12 @@
         12,
         13
       ],
-      "availability_blacklist": []
+      "availability_blocklist": [],
+      "availability_passlist": []
     },
-    "ban": [],
-    "whitelist": [],
+    "device_options": {},
+    "blocklist": [],
+    "passlist": [],
     "queue": {},
     "socat": {
       "enabled": false,
@@ -96,6 +99,8 @@
       "user": "str?",
       "password": "str?",
       "client_id": "str?",
+      "keepalive": "int?",
+      "version": "int?",
       "reject_unauthorized": "bool?",
       "include_device_information": "bool?"
     },
@@ -104,10 +109,10 @@
       "disable_led": "bool?",
       "adapter": "match(^zstack|deconz$)?"
     },
-    "ban": [
+    "blocklist": [
       "str?"
     ],
-    "whitelist": [
+    "passlist": [
       "str?"
     ],
     "advanced": {
@@ -115,8 +120,13 @@
       "ext_pan_id_string": "match(^(\\s*\\d+\\s*,){7}(\\s*\\d+\\s*)$)?",
       "channel": "int(11,26)?",
       "cache_state": "bool?",
+      "cache_state_persistent": "bool?",
+      "cache_state_send_on_startup": "bool?",
       "log_level": "match(^info|debug|warn|error$)?",
       "log_directory": "str?",
+      "log_file": "str?",
+      "log_rotation": "bool?",
+      "timestamp_format": "str?",
       "baudrate": "int?",
       "rtscts": "bool?",
       "soft_reset_timeout": "int?",
@@ -127,13 +137,23 @@
       "last_seen": "match(^disable|ISO_8601|epoch)?",
       "elapsed": "bool?",
       "availability_timeout": "int?",
-      "availability_blacklist": [
+      "availability_blocklist": [
+        "str?"
+      ],
+      "availability_passlist": [
         "str?"
       ],
       "report": "bool?",
+      "homeassistant_legacy_triggers": "bool?",
       "homeassistant_discovery_topic": "str?",
       "homeassistant_status_topic": "str?"
     },
+    "device_options": {
+      "occupancy_timeout": "int?",
+      "temperature_precision": "int?",
+      "legacy": "bool?"
+    },
+    "device_options_string": "str?",
     "queue": {
       "delay": "int?",
       "simultaneously": "int?"
