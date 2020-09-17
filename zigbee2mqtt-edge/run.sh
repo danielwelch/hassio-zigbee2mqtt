@@ -3,12 +3,19 @@
 CONFIG_PATH=/data/options.json
 
 DATA_PATH=$(jq --raw-output ".data_path" $CONFIG_PATH)
-ZIGBEE_SHEPHERD_DEBUG=$(jq --raw-output ".zigbee_shepherd_debug // empty" $CONFIG_PATH)
+DEBUG=""
 ZIGBEE_HERDSMAN_DEBUG=$(jq --raw-output ".zigbee_herdsman_debug // empty" $CONFIG_PATH)
 ZIGBEE_SHEPHERD_DEVICES=$(jq --raw-output ".zigbee_shepherd_devices // empty" $CONFIG_PATH)
 
+echo "Debug information"
+echo $ZIGBEE_HERDSMAN_DEBUG
+echo "-----"
+echo $ZIGBEE_SHEPHERD_DEVICES
+echo "-----"
+cat $CONFIG_PATH
+echo "Debug information end"
+
 # Check if config exists already
-mkdir -p $DATA_PATH
 if [[ -f $DATA_PATH/configuration.yaml ]]; then
     if [[ ! -f $DATA_PATH/.configuration.yaml.bk ]]; then
         echo "[Info] Configuration file found in data path, but no backup file found in data path. Backing up existing configuration to ${DATA_PATH}/.configuration.yaml.bk"
@@ -18,6 +25,8 @@ if [[ -f $DATA_PATH/configuration.yaml ]]; then
     fi
 fi
 
+mkdir -p "$DATA_PATH"
+
 # Parse config
 cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepherd_devices, .socat)' \
     | jq 'if .advanced.ext_pan_id_string then .advanced.ext_pan_id = (.advanced.ext_pan_id_string | (split(",")|map(tonumber))) | del(.advanced.ext_pan_id_string) else . end' \
@@ -25,13 +34,13 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
     | jq 'if .device_options_string then .device_options = (.device_options_string|fromjson) | del(.device_options_string) else . end' \
     > $DATA_PATH/configuration.yaml
 
-if [[ ! -z "$ZIGBEE_SHEPHERD_DEBUG" ]]|| [[ ! -z "$ZIGBEE_HERDSMAN_DEBUG" ]]; then
+if [[ ! -z "$ZIGBEE_HERDSMAN_DEBUG" ]]; then
     echo "[Info] Zigbee Herdsman debug logging enabled."
-    export DEBUG="zigbee-herdsman*"
+    DEBUG="zigbee-herdsman:*"
 fi
 
 if [[ ! -z "$ZIGBEE_SHEPHERD_DEVICES" ]]; then
-    echo "[Info] Searching for custom devices file in zigbee2mqtt data path..." 
+    echo "[Info] Searching for custom devices file in zigbee2mqtt data path..."
     if [[ -f "$DATA_PATH"/devices.js ]]; then
         cp -f "$DATA_PATH"/devices.js ./node_modules/zigbee-herdsman-converters/devices.js
     else
@@ -44,4 +53,4 @@ SOCAT_EXEC="$(dirname $0)/socat.sh"
 $SOCAT_EXEC $CONFIG_PATH
 
 # RUN zigbee2mqtt
-ZIGBEE2MQTT_DATA="$DATA_PATH" pm2-runtime start npm -- start
+ZIGBEE2MQTT_DATA="$DATA_PATH" DEBUG="$DEBUG" pm2-runtime start npm -- start
