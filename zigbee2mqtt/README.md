@@ -1,6 +1,6 @@
 <div align="center">
 <img src="https://github.com/Koenkk/zigbee2mqtt/blob/master/images/logo.png?raw=true"/>
-<h1>Zigbee2mqtt Home Assistant Add-on</h1>
+<h1>Home Assistant Add-on: Zigbee2mqtt</h1>
 <div style="display: flex; justify-content: center;">
   <a style="margin-right: 0.5rem;" href="https://travis-ci.org/danielwelch/hassio-zigbee2mqtt">
     <img src="https://img.shields.io/travis/danielwelch/hassio-zigbee2mqtt.svg?style=flat-square&logo=travis">
