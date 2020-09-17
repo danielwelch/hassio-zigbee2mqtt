@@ -8,7 +8,8 @@
   <a style="margin-left: 0.5rem;" href="https://cloud.docker.com/u/dwelch2101/repository/docker/dwelch2101/zigbee2mqtt-armhf">
     <img src="https://img.shields.io/docker/pulls/dwelch2101/zigbee2mqtt-armhf.svg?style=flat-square&logo=docker">
   </a>
-
+</div>
+</div>
 # Configuration
 The configuration closely mirrors that of `zigbee2mqtt` itself, with a couple of key differences:
 1. Home Assistant requires add-on configuration in JSON format, rather than YAML. If you don't understand the difference, you can use a YAML-to-JSON converter.
