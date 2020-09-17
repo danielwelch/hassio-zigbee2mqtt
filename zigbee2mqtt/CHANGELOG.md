@@ -119,7 +119,7 @@ This project is versioned based upon the version of [zigbee2mqtt](https://github
     - `homeassistant_discovery_topic`
     - `debounce` (device-specific config)
 ### Fixed
-- Fixes logic bug that prevented configuration from being updated via the Hass.io frontend UI.
+- Fixes logic bug that prevented configuration from being updated via the Home Assistant frontend UI.
 
 ## [1.2.1](https://github.com/danielwelch/hassio-zigbee2mqtt/releases/tag/v1.2.1) - 2019-03-10
 ### Changed
