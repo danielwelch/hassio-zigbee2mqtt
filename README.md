@@ -24,42 +24,16 @@ The repository includes two add-ons:
 - **zigbee2mqtt** is a stable release that tracks the released versions of zigbee2mqtt.
 - **zigbee2mqtt-edge** tracks the `dev` branch of zigbee2mqtt, so you can install the edge version if there are features or fixes in the dev branch that are not yet released.
 
-## Configuration
-
-Configure the add-on under **Supervisor → Dashboard → zigbee2mqtt**.
-
-The configuration closely mirrors that of [zigbee2mqtt itself](https://www.zigbee2mqtt.io/information/configuration.html), with a couple of key differences:
-
-1. Home Assistant requires add-on configuration in JSON format, rather than YAML. If you don't understand the difference, you can use a YAML-to-JSON converter.
-
-2. An additional top-level `data_path` option is required which defaults to `/share/zigbee2mqtt`. This is the path where the add-on should persist the data.
-
-See the [zigbee2mqtt configuration docs](https://www.zigbee2mqtt.io/information/configuration.html) for a complete description of available options. If you're not sure if a new option is supported, check to see if it is listed under the `schema` section of [`zigbee2mqtt/config.json`](zigbee2mqtt/config.json) or [`zigbee2mqtt_edge/config.json`](zigbee2mqtt_edge/config.json) in this repository. If not, you can open an issue to add support for it.
-
-### Serial Port Setting
-
-To find out which serial ports are available to the add-ons, go to **Supervisor → System → Host system → ⋮ → Hardware**. The default value is `/dev/ttyACM0` but you can use the named serial port as well (example: `/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0`).
-
-### MQTT Settings
-
-Depending on your configuration, the MQTT server config may need to include the port, typically `1883` or `8883` for SSL/TLS communications. For example, `mqtt://core-mosquitto:1883` for [Home Assistant's Mosquitto add-on](https://github.com/home-assistant/hassio-addons/blob/master/mosquitto/DOCS.md).
-
-Ensure the user credentials specified under the `mqtt` section (`user` and `password`) are correct and have write access to the MQTT server. You can create credentials using **Configuration → Users**
-
 ## Pairing
 
 The suggested way to pair your devices is to enable zigbee2mqtt's `permit_join` option from within Home Assistant using MQTT rather than through the add-on's user interface.
 
 You can use [Zigbee2MqttAssistant](https://github.com/yllibed/Zigbee2MqttAssistant) if you don't want to use MQTT directly.
 
-### Updating the Add-on and `zigbee2mqtt` Library
-
-The stable, versioned zigbee2mqtt can be updated using the standard Supervisor update functionality within the user interface. This add-on will be updated with bug fixes and as the underlying `zigbee2mqtt` library is updated.
-
+### Updating the edge Add-on
 To update the edge version of the add-on, you will need to uninstall and re-install the add-on. If you have reinstalled the add-on and believe that the latest version has not been installed, try removing the repository before reinstalling.
 
 ### Socat
-
 In some cases it is not possible to forward a serial device to the container that zigbee2mqtt runs in. This could be because the device is not physically connected to the machine at all. 
 
 Socat can be used to forward a serial device over TCP to zigbee2mqtt. See the [socat man pages](https://linux.die.net/man/1/socat) for more info.
