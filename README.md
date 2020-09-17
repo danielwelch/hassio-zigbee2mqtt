@@ -1,6 +1,6 @@
 <div align="center">
 <img src="images/logo.png">
-<h1>Zigbee2mqtt Home Assistant Add-on</h1>
+<h1>Home Assistant Add-on: Zigbee2mqtt</h1>
 <div style="display: flex; justify-content: center;">
   <a style="margin-right: 0.5rem;" href="https://dev.azure.com/danielwelch2101/hassio-zigbee2mqtt/_build?definitionId=1&_a=summary">
     <img src="https://img.shields.io/azure-devops/build/danielwelch2101/fdcd83e4-a36e-473f-80f8-6a1bd49fdb3a/1?label=build&logo=azure-pipelines&style=flat-square">
