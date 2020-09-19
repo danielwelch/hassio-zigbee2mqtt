@@ -18,7 +18,7 @@
     - `ban` renamed to `blocklist`
     - `whitelist` renamed to `passlist`
 
-If it fails to start:
+:warning: If add-on fails to start :warning:
 
 Change
 ```
