@@ -11,17 +11,6 @@
 - `.hash.json` now properly generated (`commit #unknown` resolved)
 
 ## 1.14.4.1 - 2020-09-17
-### Fixed
-- CHANGELOG bug for **stable** version
-### Added
-- Explicit support for `armv7`
-- Includes new config options from zigbee2mqtt:
-    - `output` under `experimental category`
-### Changed
-- Updated names to reflect Hass.io [rename](https://www.home-assistant.io/blog/2020/01/29/changing-the-home-assistant-brand/) to Home Assistant
-- Cleanup documentation
-
-## 1.14.4 - 2020-09-02
 ### :warning: Breaking changes
 - Several options changed
     - `availability_blacklist` renamed to `availability_blocklist` in `advanced`
@@ -48,29 +37,45 @@ whitelist: []
 ```
 
 ### Added
+- Explicit support for `armv7`
 - Includes new config options from zigbee2mqtt:
     - `external_converters`
     - `mqtt`
         - `keepalive`
         - `version`
     - `advanced`
+        - `adapter_concurrent`
         - `cache_state_persistent`
         - `cache_state_send_on_startup`
-        - `log_level`
-        - `log_rotation`
-        - `timestamp_format`
-        - `homeassistant_legacy_triggers`
         - `device_options`
             - `occupancy_timeout`
             - `temperature_precision`
             - `legacy`
         - `device_options_string`
+        - `homeassistant_legacy_triggers`
+        - `log_level`
+        - `log_rotation`
+        - `timestamp_format`
+    - `experimental`
+        - `output`
 
+### Fixed
+- CHANGELOG bug for **stable** version
+### Changed
+- Updated names to reflect Hass.io [rename](https://www.home-assistant.io/blog/2020/01/29/changing-the-home-assistant-brand/) to Home Assistant
+- Cleanup documentation
+
+## 1.14.4 - 2020-09-02
 ### Changed
 - Updated to latest Zigbee2Mqtt version [`1.14.4`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.14.4)
 
 
 ## 1.14.3 - 2020-08-12
+### Added
+- Includes new config options from zigbee2mqtt:
+    - `serial`
+        - `adapter`
+
 ### Changed
 - Updated to latest Zigbee2Mqtt version [`1.14.3`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.14.3)
 
