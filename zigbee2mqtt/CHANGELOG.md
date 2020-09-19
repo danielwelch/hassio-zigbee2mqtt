@@ -22,8 +22,14 @@
 - Cleanup documentation
 
 ## 1.14.4 - 2020-09-02
-### Changed
-- :warning: Breaking change in config. If it fails to start:
+### :warning: Breaking changes
+- Several options changed
+    - `availability_blacklist` renamed to `availability_blocklist` in `advanced`
+    - `availability_passlist` now required option in `advanced`
+    - `ban` renamed to `blocklist`
+    - `whitelist` renamed to `passlist`
+
+If it fails to start:
 
 Change
 ```
@@ -41,7 +47,28 @@ ban: []
 whitelist: []
 ```
 
+### Added
+- Includes new config options from zigbee2mqtt:
+    - `external_converters`
+    - `mqtt`
+        - `keepalive`
+        - `version`
+    - `advanced`
+        - `cache_state_persistent`
+        - `cache_state_send_on_startup`
+        - `log_level`
+        - `log_rotation`
+        - `timestamp_format`
+        - `homeassistant_legacy_triggers`
+        - `device_options`
+            - `occupancy_timeout`
+            - `temperature_precision`
+            - `legacy`
+        - `device_options_string`
+
+### Changed
 - Updated to latest Zigbee2Mqtt version [`1.14.4`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.14.4)
+
 
 ## 1.14.3 - 2020-08-12
 ### Changed
