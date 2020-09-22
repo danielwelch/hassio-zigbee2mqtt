@@ -1,18 +1,19 @@
 trigger:
+  batch: true
   branches:
     include:
     - master
     - refs/tags/*
-
+paths:
+  include:
+  - zigbee2mqtt/*
+  - zigbee2mqtt-edge/*
 pr:
 - master
-
 resources:
-- repo: self
-
-variables:
-  id: '$(Build.BuildId)'
-
+  containers:
+    - container: amd64-builder
+      image: homeassistant/amd64-builder
 stages:
 - stage: CheckPullRequest
   displayName: Build image for PR
@@ -23,8 +24,6 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - script: sudo docker pull homeassistant/amd64-builder
-      displayName: Install hassio builder
     - script: |
         docker run --rm --privileged -v ~/.docker:/root/.docker \
         -v /run/docker.sock:/run/docker.sock:rw \
@@ -52,8 +51,6 @@ stages:
     steps:
     - script: sudo docker login -u $(DOCKER_USER) -p $(DOCKER_PASSWORD)
       displayName: Login to Docker Hub
-    - script: sudo docker pull homeassistant/amd64-builder
-      displayName: Install hassio builder
     # untagged push to master -> build and push edge images with :test
     - script: |
         docker run --rm --privileged -v ~/.docker:/root/.docker \
