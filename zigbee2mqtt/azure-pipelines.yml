@@ -1,0 +1,12 @@
+trigger:
+  branches:
+    include:
+    - refs/tags/*
+pool:
+  vmImage: 'ubuntu-latest'
+
+extends:
+  template: ../job-param.yml
+  parameters:
+    addon: 'zigbee2mqtt'
+    extra_param: '--no-cache --docker-hub-check --docker-hub zigbee2mqtt'
