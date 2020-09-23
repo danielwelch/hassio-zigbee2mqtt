@@ -10,4 +10,4 @@ extends:
   template: ../job-param.yml
   parameters:
     addon: 'zigbee2mqtt-edge'
-    extra_param: '--no-cache --docker-hub zigbee2mqtt'
+    extra_param: '--no-cache'
