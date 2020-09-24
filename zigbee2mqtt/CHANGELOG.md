@@ -14,8 +14,6 @@
     - `ban` renamed to `blocklist`
     - `whitelist` renamed to `passlist`
 
-⚠️ If add-on fails to start ⚠️
-
 Change
 ```
 availability_blacklist: []
@@ -104,7 +102,7 @@ whitelist: []
 - Updated Zigbee2mqtt to version [`1.10.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.10.0)
 
 ## 1.9.0 - 2019-01-17
-- Added config option `zigbee_herdsman_debug`. Zigbee2mqtt moved from the old `zigbee_shepherd` library to the `zigbee_herdsman` library some time ago, so this option was added to reflect the change and keep things consistent. The old `zigbee_shepherd_debug` option is still supported, and setting either to `true` will enable `zigbee_shepherd` DEBUG mode.
+- Added config option `zigbee_herdsman_debug` (`zigbee_shepherd_debug` still supported for now)
 - Updated Zigbee2mqtt to version [`1.9.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.9.0)
 
 ## 1.8.0 - 2019-12-16
@@ -114,10 +112,9 @@ whitelist: []
 - Updated Zigbee2mqtt to version [`1.7.1`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.7.1)
 
 ## 1.7.0 - 2019-11-10
-- ⚠️ Added socat support (new top level option in configuration)
-  - Disabled by default -- leave `enabled` set to false to disable.
-- ⚠️ Updated Zigbee2mqtt to version [`1.7.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.7.0)
-  - There are breaking changes when upgrading to zigbee2mqtt 1.7 with respect to the user's underlying zigbee device database used by zigbee2mqtt. You cannot roll back to 1.6 after updating without repairing all your devices (the device database used by zigbee2mqtt 1.7 is not backwards compatible for older versions)
+- ⚠️ **Breaking change**: You cannot roll back to 1.6 without repairing all your devices
+- ⚠️ Added socat support: leave `enabled` set to `false` to disable.
+- Updated Zigbee2mqtt to version [`1.7.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.7.0)
 
 ## 1.6.0 - 2019-09-11
 - Update zigbee2mqtt to [`1.6.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.6.0)
