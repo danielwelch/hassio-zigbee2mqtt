@@ -19,12 +19,16 @@ See Documentation tab for more details.
 ### Updating the Edge add-on
 To update the `edge` version of the add-on, you will need to uninstall and re-install the add-on.
 
+⚠️ Make sure to backup your config as the procedure will not save this for you.
+
 **Steps**
+- Backup config from: **Supervisor → Dashboard → Zigbee2mqtt Edge → Configuration**
 - Uninstall: **Supervisor → Dashboard → Zigbee2mqtt Edge → Uninstall**
 - Refresh repo: **Supervisor → Add-on store → ⋮ → Reload**
 - Re-install: **Supervisor → Add-on store → Zigbee2mqtt Edge → Install**
+- Restore config to: **Supervisor → Dashboard → Zigbee2mqtt Edge → Configuration**
 
-### Enabling the integrated Frontend
+### Enabling the integrated Frontend (experimental)
 
 **Steps**
 - Update config: **Supervisor → Dashboard → Zigbee2mqtt Edge → Configuration**
