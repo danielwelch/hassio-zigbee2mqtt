@@ -9,7 +9,7 @@ if ! bashio::fs.directory_exists "$DATA_PATH"; then
     mkdir -p $DATA_PATH
 fi
 
-if bashio::fs.file_exists "$DATA_PATH/configuration.yaml" && !bashio::fs.file_exists "$DATA_PATH/configuration.yaml.bk"; then
+if bashio::fs.file_exists "$DATA_PATH/configuration.yaml" && ! bashio::fs.file_exists "$DATA_PATH/configuration.yaml.bk"; then
     bashio::log.info "Config 'configuration.yaml' found, but backup is missing. Creating backup '.configuration.yaml.bk' ..."
     cp $DATA_PATH/configuration.yaml $DATA_PATH/.configuration.yaml.bk
 fi
