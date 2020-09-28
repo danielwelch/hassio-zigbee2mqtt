@@ -9,7 +9,7 @@ if ! bashio::fs.directory_exists $DATA_PATH; then
     mkdir -p $DATA_PATH
 fi
 
-if bashio::fs.fs.file_exists $DATA_PATH/configuration.yaml && !bashio::fs.fs.file_exists $DATA_PATH/configuration.yaml.bk; then
+if bashio::fs.file_exists $DATA_PATH/configuration.yaml && !bashio::fs.file_exists $DATA_PATH/configuration.yaml.bk; then
     bashio::log.info "Config 'configuration.yaml' found, but backup is missing. Creating backup '.configuration.yaml.bk' ..."
     cp $DATA_PATH/configuration.yaml $DATA_PATH/.configuration.yaml.bk
 fi
@@ -21,7 +21,7 @@ if
 
 if bashio::config.true 'zigbee_shepherd_devices'; then
     bashio::log.info "Searching for custom devices file in zigbee2mqtt data path..."
-    if bashio::fs.fs.file_exists $DATA_PATH/devices.js; then
+    if bashio::fs.file_exists $DATA_PATH/devices.js; then
         ashio::log.info "File devices.js found, copying to ./node_modules/zigbee-herdsman-converters/ ..."
         cp -f "$DATA_PATH"/devices.js ./node_modules/zigbee-herdsman-converters/devices.js
     else
