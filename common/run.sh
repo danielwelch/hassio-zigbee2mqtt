@@ -1,12 +1,12 @@
 #!/usr/bin/env bashio
-DATA_PATH=$(bashio::config 'data_path')
+DATA_PATH=$(bashio::config 'data_path') 
 ZIGBEE_HERDSMAN_DEBUG=$(bashio::config 'zigbee_herdsman_debug')
 ZIGBEE_SHEPHERD_DEVICES=$(bashio::config 'zigbee_shepherd_devices')
 DEBUG=""
 
 if ! bashio::fs.directory_exists "$DATA_PATH"; then
     bashio::log.info "$DATA_PATH not present, probably first run, creating folder ..."
-    mkdir -p $DATA_PATH
+    mkdir -p "$DATA_PATH"
 fi
 
 if bashio::fs.file_exists "$DATA_PATH/configuration.yaml" && ! bashio::fs.file_exists "$DATA_PATH/configuration.yaml.bk"; then
@@ -17,7 +17,7 @@ fi
 if bashio::config.true 'zigbee_herdsman_debug'; then
     bashio::log.info "Zigbee Herdsman debug logging enabled"
     DEBUG="zigbee-herdsman:*"
-if
+fi
 
 if bashio::config.true 'zigbee_shepherd_devices'; then
     bashio::log.info "Searching for custom devices file in zigbee2mqtt data path..."
