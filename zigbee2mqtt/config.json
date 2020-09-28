@@ -65,7 +65,6 @@
   },
   "schema": {
     "zigbee_shepherd_devices": "bool?",
-    "zigbee_shepherd_debug": "bool?",
     "zigbee_herdsman_debug": "bool?",
     "external_converters": [
       "str?"
@@ -158,5 +157,5 @@
       "log": "bool?"
     }
   },
-  "image": "dwelch2101/zigbee2mqtt-{arch}"
+  "image": "zigbee2mqtt/zigbee2mqtt-{arch}"
 }

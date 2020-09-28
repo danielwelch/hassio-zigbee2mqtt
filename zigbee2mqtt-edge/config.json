@@ -17,7 +17,6 @@
   "ingress": true,
   "panel_icon": "mdi:zigbee",
   "map": [
-    "ssl",
     "share:rw",
     "config:rw"
   ],

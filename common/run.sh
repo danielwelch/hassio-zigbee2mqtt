@@ -3,7 +3,7 @@
 CONFIG_PATH=/data/options.json
 
 DATA_PATH=$(jq --raw-output ".data_path" $CONFIG_PATH)
-ZIGBEE_SHEPHERD_DEBUG=$(jq --raw-output ".zigbee_shepherd_debug // empty" $CONFIG_PATH)
+DEBUG=""
 ZIGBEE_HERDSMAN_DEBUG=$(jq --raw-output ".zigbee_herdsman_debug // empty" $CONFIG_PATH)
 ZIGBEE_SHEPHERD_DEVICES=$(jq --raw-output ".zigbee_shepherd_devices // empty" $CONFIG_PATH)
 
@@ -25,9 +25,9 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
     | jq 'if .device_options_string then .device_options = (.device_options_string|fromjson) | del(.device_options_string) else . end' \
     > $DATA_PATH/configuration.yaml
 
-if [[ ! -z "$ZIGBEE_SHEPHERD_DEBUG" ]]|| [[ ! -z "$ZIGBEE_HERDSMAN_DEBUG" ]]; then
+if [[ ! -z "$ZIGBEE_HERDSMAN_DEBUG" ]]; then
     echo "[Info] Zigbee Herdsman debug logging enabled."
-    export DEBUG="zigbee-herdsman*"
+    DEBUG="zigbee-herdsman:*"
 fi
 
 if [[ ! -z "$ZIGBEE_SHEPHERD_DEVICES" ]]; then
@@ -44,4 +44,4 @@ SOCAT_EXEC="$(dirname $0)/socat.sh"
 $SOCAT_EXEC $CONFIG_PATH
 
 # RUN zigbee2mqtt
-ZIGBEE2MQTT_DATA="$DATA_PATH" pm2-runtime start npm -- start
+ZIGBEE2MQTT_DATA="$DATA_PATH" DEBUG="$DEBUG" pm2-runtime start npm -- start
