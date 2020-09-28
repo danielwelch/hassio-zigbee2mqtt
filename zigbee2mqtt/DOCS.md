@@ -1,10 +1,9 @@
 # Home Assistant Add-on: Zigbee2mqtt
 
 # Pairing
+Leave `"permit_join": false` in your options and use the frontend configured with `ingress` to enable this. To enable `ingress`: **Supervisor → Dashboard → Zigbee2mqtt Edge → Show in sidebar**
 
-The suggested way to pair your devices is to enable zigbee2mqtt's `permit_join` option from within Home Assistant using MQTT rather than through the add-on's user interface.
-
-You can use [Zigbee2MqttAssistant](https://github.com/yllibed/Zigbee2MqttAssistant) if you don't want to use MQTT directly.
+Note: You can use MQTT to enable this option if you don't want to use the frontend
 
 # Configuration
 The configuration closely mirrors that of `zigbee2mqtt` itself, with a couple of key differences:
