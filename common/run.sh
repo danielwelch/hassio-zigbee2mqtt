@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bashio
 DATA_PATH=$(bashio::config 'data_path')
 ZIGBEE_HERDSMAN_DEBUG=$(bashio::config 'zigbee_herdsman_debug')
 ZIGBEE_SHEPHERD_DEVICES=$(bashio::config 'zigbee_shepherd_devices')
