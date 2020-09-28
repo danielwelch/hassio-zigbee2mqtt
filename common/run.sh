@@ -27,7 +27,7 @@ if bashio::config.true 'zigbee_shepherd_devices'; then
     else
         bashio::log.warn "No devices.js file found in data path, starting with default devices.js ..."
     fi
-if
+fi
 
 CONFIG_PATH=/data/options.json
 # Parse config
