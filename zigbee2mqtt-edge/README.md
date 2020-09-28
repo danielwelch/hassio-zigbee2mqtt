@@ -1,12 +1,7 @@
 # Home Assistant Add-on: Zigbee2mqtt Edge
-<div style="display: flex; justify-content: center;">
-  <a style="margin-right: 0.5rem;" href="https://travis-ci.org/danielwelch/hassio-zigbee2mqtt">
-    <img src="https://img.shields.io/travis/danielwelch/hassio-zigbee2mqtt.svg?style=flat-square&logo=travis">
-  </a>
-  <a style="margin-left: 0.5rem;" href="https://cloud.docker.com/u/dwelch2101/repository/docker/dwelch2101/zigbee2mqtt-armhf">
-    <img src="https://img.shields.io/docker/pulls/dwelch2101/zigbee2mqtt-armhf.svg?style=flat-square&logo=docker">
-  </a>
-</div>
+
+[![Build Status](https://dev.azure.com/zigbee2mqtt/Zigbee2mqtt%20Add-on/_apis/build/status/Zigbee2mqtt%20edge?branchName=master)](https://dev.azure.com/zigbee2mqtt/Zigbee2mqtt%20Add-on/_build/latest?definitionId=3&branchName=master)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dwelch2101/zigbee2mqtt-edge-amd64.svg?style=flat-square&logo=docker)](https://cloud.docker.com/u/dwelch2101/repository/docker/dwelch2101/zigbee2mqtt-edge-amd64)
 
 ⚠️ This is the Edge version ⚠️
 
@@ -29,13 +24,4 @@ To update the `edge` version of the add-on, you will need to uninstall and re-in
 - Restore config to: **Supervisor → Dashboard → Zigbee2mqtt Edge → Configuration**
 
 ### Enabling the integrated Frontend (experimental)
-
-**Steps**
-- Update config: **Supervisor → Dashboard → Zigbee2mqtt Edge → Configuration**
-
-```yaml
-experimental:
-  new_api: true
-  frontend: true
-```
 - Enable `ingress`: **Supervisor → Dashboard → Zigbee2mqtt Edge → Show in sidebar**
