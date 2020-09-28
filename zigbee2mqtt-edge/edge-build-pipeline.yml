@@ -7,8 +7,8 @@ trigger:
     include:
     - zigbee2mqtt-edge/config.json
     - zigbee2mqtt-edge/Dockerfile
-    - bashio/run.sh
-    - bashio/socat.sh
+    - common/run.sh
+    - common/socat.sh
 
 pool:
   vmImage: 'ubuntu-latest'
