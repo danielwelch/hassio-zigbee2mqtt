@@ -12,7 +12,7 @@ RUN apk add --update --no-cache \
   tar xzvf "/app.tar.gz" && \
   mv -v "zigbee2mqtt-$ZIGBEE2MQTT_VERSION" app && \
   jq -n --arg commit $ZIGBEE2MQTT_VERSION '{"hash": $commit }' > /app/.hash.json && \
-  echo "Installed zigbee2mqtt @ version $(cat /app/.hash.json)" && \
+  echo "Installed zigbee2mqtt @ version $ZIGBEE2MQTT_VERSION" && \
   cd /app && \
   npm install --unsafe-perm -g pm2 && \
   npm install --unsafe-perm && \
