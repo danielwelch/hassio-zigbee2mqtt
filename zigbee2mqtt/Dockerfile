@@ -1,12 +1,12 @@
 ARG BUILD_FROM
+ARG BUILD_EDGE
 FROM $BUILD_FROM
 
 # Add env
 ENV LANG C.UTF-8
 
 ENV ZIGBEE2MQTT_VERSION=1.14.4
-
-RUN echo "THis is $BUILD_EDGE "
+RUN echo "Arg BUILD_EDGE=$BUILD_EDGE "
 
 RUN apk add --update --no-cache \
     curl jq nodejs-npm socat \
@@ -14,7 +14,7 @@ RUN apk add --update --no-cache \
   curl -sL -o "/app.tar.gz" \
   "https://github.com/Koenkk/zigbee2mqtt/archive/$ZIGBEE2MQTT_VERSION.tar.gz" && \
   tar xzvf "/app.tar.gz" && \
-  mv -v "zigbee2mqtt-$ZIGBEE2MQTT_VERSION" app \
+  mv -v "zigbee2mqtt-$ZIGBEE2MQTT_VERSION" app && \
   jq -n --arg commit $ZIGBEE2MQTT_VERSION '{"hash": $commit }' > /app/.hash.json && \
   echo "Installed zigbee2mqtt @ version $(cat /app/.hash.json)" && \
   cd /app && \
