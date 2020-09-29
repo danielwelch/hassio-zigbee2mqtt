@@ -5,17 +5,17 @@ ENV LANG C.UTF-8
 ENV ZIGBEE2MQTT_VERSION=dev
 
 RUN apk add --update --no-cache \
-    curl jq nodejs-npm socat \
+    jq nodejs-npm socat \
     make gcc g++ linux-headers udev git python2 && \
-  git clone -b dev --single-branch --depth 1 \
-  https://github.com/Koenkk/zigbee2mqtt.git /app && \
-  jq -n --arg commit $(eval cd /app;git rev-parse --short HEAD) '{"hash": $commit }' > /app/.hash.json && \
-  echo "Installed zigbee2mqtt @ version $(cat /app/.hash.json)" && \
-  cd /app && \
-  npm install --unsafe-perm -g pm2 && \
-  npm install --unsafe-perm && \
-  apk del make gcc g++ python2 linux-headers udev git curl && \
-  rm -rf docs test images scripts data docker LICENSE README.md update.sh
+    git clone -b dev --single-branch --depth 1 \
+    https://github.com/Koenkk/zigbee2mqtt.git /app && \
+    jq -n --arg commit $(eval cd /app;git rev-parse --short HEAD) '{"hash": $commit }' > /app/.hash.json && \
+    echo "Installed zigbee2mqtt @ version $(cat /app/.hash.json)" && \
+    cd /app && \
+    npm install --unsafe-perm -g pm2 && \
+    npm install --unsafe-perm && \
+    apk del make gcc g++ python2 linux-headers udev git && \
+    rm -rf docs test images scripts data docker LICENSE README.md update.sh
 
 COPY run.sh /app/run.sh
 COPY socat.sh /app/socat.sh
