@@ -12,7 +12,7 @@ else
     if bashio::fs.file_exists "$DATA_PATH/configuration.yaml"; then
         bashio::log.info "Previous configuration found, checking backup"
         if ! bashio::fs.file_exists "$DATA_PATH/configuration.yaml.bk"; then
-            bashio::log.info "Creating backup config in '.configuration.yaml.bk'"
+            bashio::log.info "Creating backup config in '$DATA_PATH/.configuration.yaml.bk'"
             cp $DATA_PATH/configuration.yaml $DATA_PATH/.configuration.yaml.bk
         else
             bashio::log.info "Backup already exists, skipping"
@@ -50,7 +50,7 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
 
 bashio::log.info "Check if socat is required"
 if bashio::config.true 'socat.enabled'; then
-    bashio::log.info "Starting socat"
+    bashio::log.info "Preparing socat"
     /app/socat.sh
 else
     bashio::log.info "Socat not required, skipping"
