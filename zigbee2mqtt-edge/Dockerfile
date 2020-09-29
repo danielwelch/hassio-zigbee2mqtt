@@ -1,11 +1,8 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-# Add env
 ENV LANG C.UTF-8
-
-ENV ZIGBEE2MQTT_VERSION=1.14.4
-RUN echo "Arg BUILD_EDGE=$BUILD_EDGE "
+ENV ZIGBEE2MQTT_VERSION=dev
 
 RUN apk add --update --no-cache \
     curl jq nodejs-npm socat \
