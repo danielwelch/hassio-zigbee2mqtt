@@ -10,7 +10,7 @@ if ! bashio::services.available "mqtt"; then
 else
     bashio::log.info "MQTT service found, fetching server detail ..."
     if ! bashio::config.exists 'mqtt.server'; then
-        bashio::log.info "MQTT server not found, auto-discovering ..."
+        bashio::log.info "MQTT server not found in configuration, auto-discovering ..."
         MQTT_PREFIX="mqtt://"
         if [ $(bashio::services mqtt "ssl") = true ]; then
             MQTT_PREFIX="mqtts://"
@@ -19,7 +19,7 @@ else
         bashio::log.info "Received server: '$MQTT_SERVER' for MQTT!"
     fi
     if ! bashio::config.exists 'mqtt.user'; then
-        bashio::log.info "MQTT credentials not found, auto-discovering ..."
+        bashio::log.info "MQTT credentials not found in configuration, auto-discovering ..."
         MQTT_USER=$(bashio::services mqtt "username")
         MQTT_PASSWORD=$(bashio::services mqtt "password")
         bashio::log.info "Received user: '$MQTT_USER' for MQTT!"
