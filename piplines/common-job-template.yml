@@ -2,6 +2,9 @@ parameters:
 - name: addon
   type: string
   default: 'zigbee2mqtt-edge'
+- name: docker_env_param
+  type: string
+  default: ''
 - name: extra_param
   type: string
   default: '--no-cache'
@@ -31,6 +34,7 @@ jobs:
       cp common/socat.sh ${{ parameters.addon }}/
       docker run --rm --privileged \
           -v $DOCKER_CONFIG:/root/.docker \
+          ${{ parameters.docker_env_param }} \
           -v /run/docker.sock:/run/docker.sock:rw \
           -v $(pwd)/${{ parameters.addon }}:/data homeassistant/amd64-builder --$(archvar) -t /data \
           ${{ parameters.extra_param }}
