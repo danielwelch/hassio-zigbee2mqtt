@@ -13,5 +13,4 @@ extends:
   template: common-job-template.yml
   parameters:
     addon: 'zigbee2mqtt-edge'
-    docker_env_param: '--env BUILD_EDGE=1'
     extra_param: '--no-latest --test'
