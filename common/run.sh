@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 DATA_PATH=$(bashio::config 'data_path') 
-MQTT_HOST=$(bashio::config "mqtt.server")
+MQTT_SERVER=$(bashio::config 'mqtt.server')
 MQTT_USER=$(bashio::config 'mqtt.user')
 MQTT_PASSWORD=$(bashio::config 'mqtt.password')
 DEBUG=""
@@ -11,8 +11,12 @@ else
     bashio::log.info "MQTT service found, fetching server detail ..."
     if ! bashio::config.exists 'mqtt.server'; then
         bashio::log.info "MQTT server not found, auto-discovering ..."
-        MQTT_HOST=$(bashio::services mqtt "host")
-        bashio::log.info "Received host: '$MQTT_HOST' for MQTT!"
+        MQTT_PREFIX="mqtt://"
+        if [ $(bashio::services mqtt "ssl") = true ]; then
+            MQTT_PREFIX="mqtts://"
+        fi
+        MQTT_SERVER="$MQTT_PREFIX$(bashio::services mqtt "host"):$(bashio::services mqtt "port")"
+        bashio::log.info "Received server: '$MQTT_SERVER' for MQTT!"
     fi
     if ! bashio::config.exists 'mqtt.user'; then
         bashio::log.info "MQTT credentials not found, auto-discovering ..."
@@ -68,7 +72,7 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
     | jq 'if .device_options_string then .device_options = (.device_options_string|fromjson) | del(.device_options_string) else . end' \
     | MQTT_USER="$MQTT_USER"  jq '.mqtt.user=env.MQTT_USER' \
     | MQTT_PASSWORD="$MQTT_PASSWORD" jq '.mqtt.password=env.MQTT_PASSWORD' \
-    | MQTT_HOST="$MQTT_HOST" jq '.mqtt.server=env.MQTT_HOST' \
+    | MQTT_SERVER="$MQTT_SERVER" jq '.mqtt.server=env.MQTT_SERVER' \
     > $DATA_PATH/configuration.yaml
 
 bashio::log.info "Check if socat is required"
