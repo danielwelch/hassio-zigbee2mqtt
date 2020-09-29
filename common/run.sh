@@ -66,9 +66,9 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
     | jq 'if .advanced.ext_pan_id_string then .advanced.ext_pan_id = (.advanced.ext_pan_id_string | (split(",")|map(tonumber))) | del(.advanced.ext_pan_id_string) else . end' \
     | jq 'if .advanced.network_key_string then .advanced.network_key = (.advanced.network_key_string | (split(",")|map(tonumber))) | del(.advanced.network_key_string) else . end' \
     | jq 'if .device_options_string then .device_options = (.device_options_string|fromjson) | del(.device_options_string) else . end' \
-    | jq '.mqtt.user=env.MQTT_USER' \
-    | jq '.mqtt.password=env.MQTT_PASSWORD' \
-    | jq '.mqtt.server=env.MQTT_HOST' \
+    | MQTT_USER="$MQTT_USER"  jq '.mqtt.user=env.MQTT_USER' \
+    | MQTT_PASSWORD="$MQTT_PASSWORD" jq '.mqtt.password=env.MQTT_PASSWORD' \
+    | MQTT_HOST="$MQTT_HOST" jq '.mqtt.server=env.MQTT_HOST' \
     > $DATA_PATH/configuration.yaml
 
 bashio::log.info "Check if socat is required"
