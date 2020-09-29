@@ -15,5 +15,8 @@
 - Fixed `Build Status` and `Docker Pulls` to point to correct location and use markdown code
 - Add-on images are now taken from Docker Hub `zigbee2mqtt` organisation
 - Added docs for Pairing using the integrated frontend
+- Changed mqtt.server to be optional
+- Added support for MQTT auto discovery (server, user, password) if missing from config
+- Changed defaults to remove MQTT server, user and password
 - Support for [Experimental Frontend](https://github.com/Koenkk/zigbee2mqtt/issues/4266) using `ingress`
 - Tracks latest Zigbee2mqtt [`dev branch`](https://github.com/Koenkk/zigbee2mqtt/commits/dev)

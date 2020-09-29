@@ -1,6 +1,26 @@
 #!/usr/bin/with-contenv bashio
 DATA_PATH=$(bashio::config 'data_path') 
+MQTT_HOST=$(bashio::config "mqtt.server")
+MQTT_USER=$(bashio::config 'mqtt.user')
+MQTT_PASSWORD=$(bashio::config 'mqtt.password')
 DEBUG=""
+if ! bashio::services.available "mqtt"; then
+    bashio::log.error "No internal MQTT service found. Please install Mosquitto broker"
+    exit 0
+else
+    bashio::log.info "MQTT service found, fetching server detail ..."
+    if ! bashio::config.exists 'mqtt.server'; then
+        bashio::log.info "MQTT server not found, auto-discovering ..."
+        MQTT_HOST=$(bashio::services mqtt "host")
+        bashio::log.info "Received host: '$MQTT_HOST' for MQTT!"
+    fi
+    if ! bashio::config.exists 'mqtt.user'; then
+        bashio::log.info "MQTT credentials not found, auto-discovering ..."
+        MQTT_USER=$(bashio::services mqtt "username")
+        MQTT_PASSWORD=$(bashio::services mqtt "password")
+        bashio::log.info "Received user: '$MQTT_USER' for MQTT!"
+    fi
+fi
 
 bashio::log.info "Checking if $DATA_PATH exists"
 if ! bashio::fs.directory_exists "$DATA_PATH"; then
@@ -46,6 +66,9 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
     | jq 'if .advanced.ext_pan_id_string then .advanced.ext_pan_id = (.advanced.ext_pan_id_string | (split(",")|map(tonumber))) | del(.advanced.ext_pan_id_string) else . end' \
     | jq 'if .advanced.network_key_string then .advanced.network_key = (.advanced.network_key_string | (split(",")|map(tonumber))) | del(.advanced.network_key_string) else . end' \
     | jq 'if .device_options_string then .device_options = (.device_options_string|fromjson) | del(.device_options_string) else . end' \
+    | jq '.mqtt.user=env.MQTT_USER' \
+    | jq '.mqtt.password=env.MQTT_PASSWORD' \
+    | jq '.mqtt.server=env.MQTT_HOST' \
     > $DATA_PATH/configuration.yaml
 
 bashio::log.info "Check if socat is required"
