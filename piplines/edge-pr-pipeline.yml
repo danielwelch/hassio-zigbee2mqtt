@@ -13,4 +13,4 @@ extends:
   template: common-job-template.yml
   parameters:
     addon: 'zigbee2mqtt-edge'
-    extra_param: '--no-latest --test'
+    extra_param: '--no-latest --test --build-arg BUILD_EDGE=1'

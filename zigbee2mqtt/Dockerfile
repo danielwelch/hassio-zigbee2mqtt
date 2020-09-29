@@ -6,14 +6,16 @@ ENV LANG C.UTF-8
 
 ENV ZIGBEE2MQTT_VERSION=1.14.4
 
+RUN echo "THis is $BUILD_EDGE "
+
 RUN apk add --update --no-cache \
     curl jq nodejs-npm socat \
     make gcc g++ linux-headers udev git python2 && \
   curl -sL -o "/app.tar.gz" \
   "https://github.com/Koenkk/zigbee2mqtt/archive/$ZIGBEE2MQTT_VERSION.tar.gz" && \
   tar xzvf "/app.tar.gz" && \
-  jq -n --arg commit $ZIGBEE2MQTT_VERSION '{"hash": $commit }' > /app/.hash.json && \
   mv zigbee2mqtt-$ZIGBEE2MQTT_VERSION app \
+  jq -n --arg commit $ZIGBEE2MQTT_VERSION '{"hash": $commit }' > /app/.hash.json && \
   echo "Installed zigbee2mqtt @ version $(cat /app/.hash.json)" && \
   cd /app && \
   npm install --unsafe-perm -g pm2 && \
