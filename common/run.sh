@@ -1,4 +1,4 @@
-#!/usr/bin/env bashio
+#!/usr/bin/with-contenv bashio
 DATA_PATH=$(bashio::config 'data_path') 
 DEBUG=""
 
