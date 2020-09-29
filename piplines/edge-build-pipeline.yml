@@ -14,7 +14,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 extends:
-  template: ../job-param.yml
+  template: common-job-template.yml
   parameters:
     addon: 'zigbee2mqtt-edge'
     extra_param: '--no-cache'
