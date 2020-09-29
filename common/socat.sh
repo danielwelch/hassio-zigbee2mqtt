@@ -1,15 +1,13 @@
 #!/usr/bin/with-contenv bashio
 # Configuration and variables
-CONFIG_PATH=$1
-EXEC_TYPE=${2:-normal}
-DATA_PATH=$(jq --raw-output ".data_path" $CONFIG_PATH)
-SOCAT_ENABLED=$(jq --raw-output ".socat.enabled // empty" $CONFIG_PATH)
-SOCAT_MASTER=$(jq --raw-output ".socat.master // empty" $CONFIG_PATH)
-SOCAT_SLAVE=$(jq --raw-output ".socat.slave // empty" $CONFIG_PATH)
-SOCAT_OPTIONS=$(jq --raw-output ".socat.options // empty" $CONFIG_PATH)
-SOCAT_INITDELAY=$(jq --raw-output ".socat.initialdelay // 1" $CONFIG_PATH)
-SOCAT_RESTDELAY=$(jq --raw-output ".socat.restartdelay // 1" $CONFIG_PATH)
-SOCAT_LOG=$(jq --raw-output ".socat.log // empty" $CONFIG_PATH)
+DATA_PATH=$(bashio::config 'data_path')
+SOCAT_ENABLED=$(bashio::config 'socat.enabled')
+SOCAT_MASTER=$(bashio::config 'socat.master')
+SOCAT_SLAVE=$(bashio::config 'socat.slave')
+SOCAT_OPTIONS=$(bashio::config 'socat.options')
+SOCAT_INITDELAY=$(bashio::config 'socat.initialdelay')
+SOCAT_RESTDELAY=$(bashio::config 'socat.restartdelay')
+SOCAT_LOG=$(bashio::config 'socat.log')
 
 # Validate input
 if [[ -z "$SOCAT_MASTER" ]]; then
@@ -32,48 +30,22 @@ else
   SOCAT_LOGFILE=""
 fi
 
-# Forked process, start the socat process within a loop.
-if [[ $EXEC_TYPE = "fork" ]]; then
-  while true; do
-    # Start socat process. This will terminate when when pipe is terminated
-    bashio::log.info "Starting socat process"
-	if [[ -z "$SOCAT_LOGFILE" ]]; then
-      socat $SOCAT_OPTIONS $SOCAT_MASTER $SOCAT_SLAVE 
-    else
-	  socat $SOCAT_OPTIONS $SOCAT_MASTER $SOCAT_SLAVE > $SOCAT_LOGFILE 2>&1
-	fi
-	
-    # Do a sleep after the socat has terminated unexpectedly.
-    bashio::log.warning "Socat process terminated, restarting after $SOCAT_RESTDELAY sec"
-    sleep $SOCAT_RESTDELAY
-  done
-  exit 0
-fi
+# Socat start configuration
+bashio::log.blue "Socat startup parameters:"
+bashio::log.blue "Options:     $SOCAT_OPTIONS"
+bashio::log.blue "Master:      $SOCAT_MASTER"
+bashio::log.blue "Slave:       $SOCAT_SLAVE"
+bashio::log.blue "Logfile:     $SOCAT_LOGFILE"
+bashio::log.blue "Retrydelay:  $SOCAT_RESTDELAY seconds"
 
-
-# Stop/skip when not enabled or when mandatory variables are empty
-if [[ -z "$SOCAT_ENABLED" ]] || [[ "$SOCAT_ENABLED" = false ]]; then
-  bashio::log.warning "Socat is DISABLED and not started"
-  exit 0
-fi
-bashio::log.info "Socat is ENABLED"
-
-# If there is a log file, print the last 25 lines
-if [[ -f "$SOCAT_LOGFILE" ]]; then
-  bashio::log.info "Last 50 lines of the previous socat log file:"
-  tail -n 50 $SOCAT_LOGFILE 
-  bashio::log.info "End of socat log file"
-fi
-
-# Start socat by forking this script
-bashio::log.info "Starting socat with:"
-bashio::log.info "Options:     $SOCAT_OPTIONS"
-bashio::log.info "Master:      $SOCAT_MASTER"
-bashio::log.info "Slave:       $SOCAT_SLAVE"
-bashio::log.info "Logfile:     $SOCAT_LOGFILE"
-bashio::log.info "Retrydelay:  $SOCAT_RESTDELAY seconds"
-
-/app/socat.sh $CONFIG_PATH fork &
-
-# Do an initial sleep
-sleep $SOCAT_INITDELAY
+while true; do
+  # Start socat process. This will terminate when when pipe is terminated
+  if [[ -z "$SOCAT_LOGFILE" ]]; then
+    socat $SOCAT_OPTIONS $SOCAT_MASTER $SOCAT_SLAVE
+  else
+    socat $SOCAT_OPTIONS $SOCAT_MASTER $SOCAT_SLAVE > $SOCAT_LOGFILE 2>&1
+  fi
+  # Do a sleep after the socat has terminated unexpectedly.
+  bashio::log.warning "Socat process terminated, restarting after $SOCAT_RESTDELAY sec"
+  sleep $SOCAT_RESTDELAY
+done
