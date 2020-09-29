@@ -10,7 +10,6 @@ jobs:
 - job: generator
   steps:
   - bash: |
-      ls
       # Retrieve supported achitectures from config.json
       ARCH="$(jq -r -c '.arch | map( { (.|tostring): { 'archvar': .} } ) | add' ./${{ parameters.addon }}/config.json)"
       # Prepare matrix run for job to allow parallel architecture build
