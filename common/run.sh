@@ -50,9 +50,8 @@ cat "$CONFIG_PATH" | jq 'del(.data_path, .zigbee_shepherd_debug, .zigbee_shepher
 
 bashio::log.info "Check if socat is required"
 if bashio::config.true 'socat.enabled'; then
-    bashio::log.info "Starting socat in a separate process"
-    SOCAT_EXEC="/app/socat.sh"
-    $SOCAT_EXEC $CONFIG_PATH
+    bashio::log.info "Starting socat"
+    /app/socat.sh
 else
     bashio::log.info "Socat not required, skipping"
 fi
