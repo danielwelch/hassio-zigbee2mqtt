@@ -1,12 +1,15 @@
 trigger:
   branches:
     include:
-    - refs/tags/*
+    - dev
+pr:
+  - dev
+
 pool:
   vmImage: 'ubuntu-latest'
 
 extends:
-  template: ../job-param.yml
+  template: common-job-template.yml
   parameters:
     addon: 'zigbee2mqtt'
-    extra_param: '--no-cache --docker-hub-check'
+    extra_param: '--no-latest --test'

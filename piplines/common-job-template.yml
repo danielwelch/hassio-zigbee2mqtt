@@ -10,7 +10,6 @@ jobs:
 - job: generator
   steps:
   - bash: |
-      ls
       # Retrieve supported achitectures from config.json
       ARCH="$(jq -r -c '.arch | map( { (.|tostring): { 'archvar': .} } ) | add' ./${{ parameters.addon }}/config.json)"
       # Prepare matrix run for job to allow parallel architecture build
@@ -28,6 +27,8 @@ jobs:
       command: 'login'
     displayName: Login to docker hub
   - script: |
+      cp common/run.sh ${{ parameters.addon }}/
+      cp common/socat.sh ${{ parameters.addon }}/
       docker run --rm --privileged \
           -v $DOCKER_CONFIG:/root/.docker \
           -v /run/docker.sock:/run/docker.sock:rw \
