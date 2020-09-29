@@ -14,7 +14,7 @@ RUN apk add --update --no-cache \
   curl -sL -o "/app.tar.gz" \
   "https://github.com/Koenkk/zigbee2mqtt/archive/$ZIGBEE2MQTT_VERSION.tar.gz" && \
   tar xzvf "/app.tar.gz" && \
-  mv zigbee2mqtt-$ZIGBEE2MQTT_VERSION app \
+  mv -v "zigbee2mqtt-$ZIGBEE2MQTT_VERSION" app \
   jq -n --arg commit $ZIGBEE2MQTT_VERSION '{"hash": $commit }' > /app/.hash.json && \
   echo "Installed zigbee2mqtt @ version $(cat /app/.hash.json)" && \
   cd /app && \
