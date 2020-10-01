@@ -6,6 +6,9 @@ The suggested way to pair your devices is to enable zigbee2mqtt's `permit_join` 
 
 You can use [Zigbee2MqttAssistant](https://github.com/yllibed/Zigbee2MqttAssistant) if you don't want to use MQTT directly.
 
+### Enabling the integrated Frontend
+Enable `ingress` to have the frontend available in your UI: **Supervisor → Dashboard → Zigbee2mqtt Edge → Show in sidebar**. You can find more details about the feature on the [Zigbee2mqtt documentation](https://www.zigbee2mqtt.io/information/frontend.html).
+
 # Configuration
 The configuration closely mirrors that of `zigbee2mqtt` itself, with a couple of key differences:
 1. Home Assistant requires add-on configuration in JSON format, rather than YAML. If you don't understand the difference, you can use a YAML-to-JSON converter.
