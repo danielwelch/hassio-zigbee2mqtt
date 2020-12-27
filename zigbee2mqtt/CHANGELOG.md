@@ -1,3 +1,8 @@
+## 1.17.0.1
+- New configuration option
+    - `advanced`
+        - `adapter_delay`
+
 ## 1.17.0
 - Updated Zigbee2mqtt to version [`1.17.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.17.0)
 

@@ -124,6 +124,7 @@
       "rtscts": "bool?",
       "soft_reset_timeout": "int?",
       "adapter_concurrent": "int?",
+      "adapter_delay": "int?",
       "network_key": [
         "int?"
       ],
