@@ -1,3 +1,6 @@
+## 1.17.0
+- Updated Zigbee2mqtt to version [`1.17.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/1.17.0)
+
 ## 1.16.2.2
 - Fixes new installations errors (was not due to default but due to type error)
 
@@ -48,7 +51,7 @@ availability_blocklist: []
 availability_passlist: []
 ```
 
-Remove 
+Remove
 ```
 ban: []
 whitelist: []
@@ -227,6 +230,6 @@ whitelist: []
 - Download release archives instead of git cloning the specific branch
 - Updated Zigbee2mqtt to version [`0.1.1`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/0.1.1)
 
-## 0.1.0 
+## 0.1.0
 - First versioned release of the add-on
 - Updated Zigbee2mqtt to version [`0.1.0`](https://github.com/Koenkk/zigbee2mqtt/releases/tag/0.1.0)
